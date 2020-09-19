@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Webhooks
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stripe_javascript_tag
+  %body
+    - if alert.present?
+      .bg-red-100.border.border-red-400.text-red-700.px-4.py-3.rounded.relative{:role => "alert"}
+        %strong.font-bold Holy smokes!
+        %span.block.sm:inline=alert
+    - if notice.present?
+      .bg-teal-100.border-t-4.border-teal-500.rounded-b.text-teal-900.px-4.py-3.shadow-md{:role => "alert"}
+        .flex
+          %div
+            %p.text-sm=notice
+    = yield

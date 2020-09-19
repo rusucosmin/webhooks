@@ -1,0 +1,15 @@
+= render "partials/nav"
+
+.w-full.max-w-lg.mx-auto.m-5
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "bg-white shadow-md rounded px-8 pt-6 pb-8" } ) do |f|
+    %h2.text-lg  Forgot your password?
+    = render "devise/shared/error_messages", resource: resource
+    .mb-4
+      = f.label :email, class: "block text-gray-700 text-sm font-bold mb-2"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "john@doe.com"
+    .flex.items-center.justify-center
+      = f.submit "Send me reset password instructions", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-non e focus:shadow-outline"
+    .text-right
+      = render "devise/shared/links"
+  %p.text-center.text-gray-500.text-xs
+    ©2020 bacdocs.ro. All rights reserved.

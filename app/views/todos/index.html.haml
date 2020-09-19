@@ -1,0 +1,23 @@
+= render "partials/nav"
+.bg-white.mx-auto.max-w-2xl.rounded-lg.overflow-hidden.p-2
+  %h1.text-xl Your todos
+
+  %table.table-auto
+    %thead
+      %tr
+        %th.border.px-4.py-2 Title
+        %th.border.px-4.py-2 Description
+        %th.border.px-4.py-2{colspan: '3'} Actions
+
+    %tbody
+      - @todos.each do |todo|
+        %tr.bg-gray-100
+          %td.border.px-4.py-2= todo.title
+          %td.border.px-4.py-2= todo.description
+          %td.border.px-4.py-2= link_to 'Show', todo, class: "text-blue-500 hover:text-blue-800"
+          %td.border.px-4.py-2= link_to 'Edit', edit_todo_path(todo), class: "text-blue-500 hover:text-blue-800"
+          %td.border.px-4.py-2= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-blue-500 hover:text-blue-800"
+
+  %br
+
+  = link_to 'New Todo', new_todo_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

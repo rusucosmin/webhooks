@@ -1,0 +1,31 @@
+= render "partials/nav"
+.bg-white.mx-auto.max-w-4xl.rounded-lg.break-all.p-2
+  %p.p-2
+    %b Endpoint url:
+    = @webhook.endpoint_url
+  %p.p-2
+    %b Description:
+    = @webhook.description
+  %p.p-2
+    %b Event types:
+    = @webhook.event_types
+  %p.p-2
+    %b Disabled:
+    = @webhook.disabled
+  %p.p-2
+    %b Signing secret:
+    = @webhook.signing_secret
+
+  %p.p-2
+    Webhook Attempts
+    - WebhookAttempt.where(webhook: @webhook).each do |wa|
+      %p.p-2
+        %b Response Code
+        = wa.response_code
+      %p.p-2
+        %b Response Body
+        = wa.response_body
+
+  = link_to 'Edit', edit_webhook_path(@webhook), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  \|
+  = link_to 'Back', webhooks_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

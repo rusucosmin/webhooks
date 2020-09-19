@@ -1,0 +1,9 @@
+= render "partials/nav"
+.bg-white.mx-auto.max-w-2xl.rounded-lg.overflow-hidden.p-2
+  %h1.text-xl Editing todo
+
+  = render 'form'
+
+  = link_to 'Show', @todo, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  \|
+  = link_to 'Back', todos_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
